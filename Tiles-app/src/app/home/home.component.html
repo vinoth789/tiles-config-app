@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <b>Admin dashboard</b>
+    </div>
+    <div class="card-body">
+      <div class="tab-container mb-5">
+        <ul role="tablist" class="nav nav-tabs nav-tabs-primary">
+          <li class="nav-item">
+            <a href="#adminHome" data-toggle="tab" role="tab" class="nav-link active">
+              <b>Create Config</b>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content" style="padding:20px;">
+          <div id="adminHome" role="tabpanel" class="tab-pane active">
+              <div class="row"> 
+              <div class="form-group">
+                  <div>
+                      <input type="file" name="file" (change)="uploadFile($event)"
+                      placeholder="Image" style="display:none;" #file/>
+                      <button class="btn btn-info" type="button" (click)="file.click()">Upload file</button>
+                  </div>
+                </div>
+              </div>
+
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                  <div class="panel-body">
+                      
+                    <table class="table table-striped" id="adminHomeTable">
+                      <thead>
+                        <tr>
+                          <th>Config name</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+
+                        </tr>
+                      </thead>
+                      <tbody class="tbodyPanel">
+                            <tr 
+                              *ngFor="let entry of data">
+                              
+                                <td>
+                                  <input class="form-control" value="{{entry.name}}"  readonly/>
+                                </td>
+
+                                <td>
+                                  <div class="editConfig" id="editConfig">
+                                    <a class="btn btn-style" (click)="editConfig(entry)" >
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a class="btn btn-style" (click)="deleteConfig(entry)"><i class="fa fa-trash"></i></a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><button class="btn btn-primary" type="button" (click)="addNewConfig('add')">Add new config</button></td>
+                              </tr>
+                              <tr>
+                                
+                                <td><button class="btn btn-info" type="button" (click)="createConfigJson()">Create config file</button></td>
+                                
+                              </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+              </div>
+              <div class="col-md-6">
+                <app-config-add *ngIf="entry != null" [entry]="entry" (onapply)="addConfigEntries()" [btnlabelValue]="btnlabel"></app-config-add>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

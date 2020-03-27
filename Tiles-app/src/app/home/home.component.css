@@ -1,0 +1,54 @@
+
+  .btn-style {
+    color: #fff;
+    background-color: 545454;
+    border-color: 545454;
+  }
+
+  #adminHomeTable {
+    background: radial-gradient(#e6e9f0, #eef1f5);
+    border-collapse: collapse;
+    width: 100%;
+    border: 0px solid #ddd;
+    font-size: 18px;
+  }
+
+  #adminHomeTable th,
+  #adminHomeTable td {
+    text-align: center;
+    padding: 12px;
+
+  }
+
+  #configDataTable tbody {
+    display: block;
+    height: 230px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+  }
+  .tbodyPanel {
+    display: block;
+    height: 650px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+  }
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  thead {
+    background: rgba(99, 109, 132, 0.34);
+  }
+
+  table {
+    width: 400px;
+  }
+
