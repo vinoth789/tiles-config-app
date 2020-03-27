@@ -1,0 +1,103 @@
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <b>Add/Edit config</b>
+        </div>
+        <div class="card-body">
+          <div class="col-md-12">
+                <form name="form" (ngSubmit)="f.form.valid && Apply()" #f="ngForm" novalidate>
+                    <div class="col-offset-md-2 col-md-12">
+              <div class="form-group">
+                
+                  <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="entry.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" 
+                    required/>
+                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="col-offset-md-2 col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="entry.text" name="text" #text="ngModel" [ngClass]="{ 'is-invalid': f.submitted && text.invalid }"
+                    placeholder="Text" required/>
+                    <div *ngIf="f.submitted && text.invalid" class="invalid-feedback">
+                        <div *ngIf="text.errors.required">Text is required</div>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+
+                <div class="col-offset-md-2 col-md-12">
+                  <input type="file" class="form-control" [(ngModel)]="entry.img" name="img"
+                    placeholder="Image" />
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-offset-md-2 col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="entry.icon" name="icon"
+                    placeholder="Icon" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4">
+                  <h4>Data</h4>
+                </label>
+                <div class="col-offset-md-2 col-md-12">
+                  
+                    <table class="table table-striped" id="configDataTable">
+
+                      <tbody class="tbodyPanel">                   
+                                <tr>
+                          <div
+                            *ngFor="let d of entry.data ">
+                              <td>
+                                <input class="form-control" [(ngModel)]="d.key"  placeholder="Key"[ngModelOptions]="{standalone:true}"/>
+                              </td>
+
+                              <td>
+                                <input class="form-control" [(ngModel)]="d.value"  placeholder="Value" [ngModelOptions]="{standalone:true}"/>
+                              </td>
+
+                              <td><button class="btn btn-danger" type="button" (click)="deleteData(d)"><i
+                                    class="fa fa-trash"></i></button></td>
+                          </div>
+                        </tr>
+                        <tr>
+                          <td><button class="btn btn-primary" type="button" (click)="addData()"><i class="fa fa-plus"></i></button></td>                                       
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  
+                </div>
+              </div>
+
+              <div class="form-group">
+
+                <div class="col-offset-md-2 col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="entry.url" name="url"
+                    placeholder="URL" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-offset-md-2 col-md-4">
+                  <button
+                    
+                    class="btn btn-info"
+                    >
+                    {{btnlabelValue}}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
